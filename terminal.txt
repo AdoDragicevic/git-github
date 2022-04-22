@@ -1,0 +1,16 @@
+Mac                   | Windows               | Description
+ls                      dir                     list contents of current directory
+ls -a                   ?                       list all files (even hidden, e.g. .git)
+ls <dir-name>           dir <dir-name>          list contents of dir
+open .                  start .                 open file explorer
+clear                   clear                   clear terminal  
+pwd                     pwd                     print working directory (show current location)
+cd <dir-name>           cd <dir-name>           change dir
+cd ..                   cd ..                   return to previous dir
+touch <file-name>       echo > <file-name>      create file
+touch <file1> <file2>   echo > <file1> <file2>  create files
+touch dir/dir/file1     echo > dir/dir/file1    create nested file
+mkdir <dir-name>        mkdir <dir-name>        create folder
+mkdir dir/dir/folder1   mkdir dir/dir/folder1   create nested folder
+rm <file-name>          rm <file-name>          delete file
+rm -rf <dir-name>       rm <dir-name>           delete directory

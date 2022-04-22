@@ -1,0 +1,27 @@
+git init // create new repo; creates .git file
+
+.gitignore // secret.js node_modules/ *.txt
+
+git config --global user.name "Ado Dragicevic" // ommit string to see current name
+git config --global user.email "adodragicevic@gmail.com"
+
+git status // check status
+
+git add <file-name> // add to staging area
+git add <file-name> <more-file-names> // add to staging area
+git add . // add all ustracked files to staging area
+
+git commit // add checkpoint
+git commit -m // "add checkpoint and inline message"
+git commit -a -m " // add all untracked files to staging area & commit with message
+
+git branch // see branches
+git branch <branch-name> // create branch
+git branch -d <branch-name> // delete branch
+git branch -D <branch-name> // delete branch even if changes are not merged anywhere
+git branch -m <branch-name> // rename HEAD
+
+git switch <branch-name> // switch to branch
+git switch -c <branch-name> // create branch and switch to in
+
+git checout <branch-name> // switch to branch
