@@ -25,3 +25,5 @@ git switch <branch-name> // switch to branch
 git switch -c <branch-name> // create branch and switch to in
 
 git checout <branch-name> // switch to branch
+
+git log // shows commits
