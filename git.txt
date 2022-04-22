@@ -27,3 +27,4 @@ git switch -c <branch-name> // create branch and switch to in
 git checout <branch-name> // switch to branch
 
 git log // shows commits
+git log --oneline // shows commits overview
