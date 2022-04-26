@@ -14,17 +14,123 @@ git add . // add all ustracked files to staging area
 git commit // add checkpoint
 git commit -m // "add checkpoint and inline message"
 git commit -a -m " // add all untracked files to staging area & commit with message
+git commit -am " // add all untracked files to staging area & commit with message
+git commit --ament // edit previous commit
 
 git branch // see branches
 git branch <branch-name> // create branch
-git branch -d <branch-name> // delete branch
+git branch -d <branch-name> // delete branch; you must not be on the branch you are trying to delete
 git branch -D <branch-name> // delete branch even if changes are not merged anywhere
-git branch -m <branch-name> // rename HEAD
+git branch -m <branch-name> // rename HEAD; you must be on the branch you are trying to rename
 
 git switch <branch-name> // switch to branch
 git switch -c <branch-name> // create branch and switch to in
+git switch - // switch to branch we were on before
 
 git checout <branch-name> // switch to branch
 
 git log // shows commits
 git log --oneline // shows commits overview
+
+// Merging
+// we merge branches, not specific commits
+// we always merge based on the current HEAD branch (to the HEAD branch)
+
+git merge <branch-name> // merge specified branch to current HEAD
+
+// fast forward merge (when there is no additional work on master)
+// merge commit (comit created when we merge to master that has been changed)
+// merge conflict ()
+    - git tells you there is a conflict
+    - git tells you in which files
+    - you open the file, the conflicts are highlighted
+    - edit file to remove conflicts
+    - remove git markers ('<<<<<<<<', '========', '>>>>>>>>>')
+    - add & commit changes
+
+git diff // informative command (like status or log)
+git diff // show unstaged changes
+git diff HEAD // show unstaged and staged changes (since last commit)
+git diff --staged // show staged changes
+git diff --cached // identical as diff --staged
+git diff <file-name> // show differences only for specified file(s)
+git diff <branch>..<branch2> // compare differences on branches
+git diff <branch> <branch2> // identical as line above
+git diff <commit-hash>..<commit-hash-2> // show differences between 2 branches
+git diff <commit-hash> <commit-hash-2> // identical as line above
+
+git stash 
+ - before we switch to another branch we should eather commit or stash changes
+ - othervise the changes will go with us (if there are no conflicts), or switch will not work
+git stash // save changes that are not commited
+git stash save // identical as line above
+git stash pop // retrieve the last stash to working dir 
+git stash apply // retrieve the last stash to working dir, without removing it from the stas (useful
+                   if we want to apply stashed changes to multiple places)
+git stash list // show all stashes
+git stash apply <stash-id> // apply specified stash
+git stash drop <stash-id> // remove specified stash
+git stash clear // delete all stashes
+
+Going back in time
+git checkout <commit-hash> // gives us 'detached HEAD'; HEAD usually points to a branch reference, and
+                              branch reference points to its last commit; 'detached HEAD' points to commit
+ - detached HEAD options:
+    - stay in detached HEAD in 'view mode',
+    - go back to HEAD (git switch master),
+    - chreate new branch and switch to it (you can now make and save changes, since HEAD is no longer detached)
+
+git checkout HEAD~1 // revisit previous commit (number indicates how far back)
+
+Restore // deleted changes that are not commited are lost and can not be retrieved!
+git checkout HEAD <file> // discard changes to a file (revert it to how it looked on last commit)
+git checkout -- <file> // identical as line above
+git restore <file> // discard changes to file; identical as line above
+git restore --source HEAD~1 <file> // now git resore does not reference the HEAD; restore specified file
+                                      relative to defined commit
+git restore --source <commit-hash> <file> // identical as line above
+
+git restore --staged <file> // unstage file; changes made to the file are not deleted
+
+Reset
+git reset <commit-hash> // reset repository to specified commit; deletes commits after it, but keeps the changes;
+                           also called basic reset; now we can commit the changes on new branch or make 1 commit
+                           instead of 4
+git reset --hard <commit-hash> // same as above but it also deletes all changes; know as hard reset
+git reset --hard HEAD~1 // same as above; instead of commit-hash we specify the num of commits to go back
+
+Revert
+git revert <commit-hash>
+ - both reset and revert 'undo' changes, but they do it in a different way
+ - reset moves branch pointer backwards, eliminating commits
+ - revert creates a new commit that does not include changes from commits after the specified commit-hash,
+   but the new commit is added to the end of the branch and previous commits (including reverted) are not lost
+ - can resut in conflicts
+
+Reset or Revert?
+ - use revert if you want to reverse commits that are shared (other people have them on their machines)
+ - use reset if you want to revert commit that you haven't shared with others and no one will ever know
+
+Rebasing
+ - Golden rule: never rebase commits that have already been shared (i.e. on github)
+ - two ways of using:
+    1. alternative to merge
+
+        git switch feature
+        git rebase master
+
+         - this moves entire feature branch os that is BEGINS at the tip of the master branch
+         - original commits on master are unchanged
+         - feature branch history is changed
+         - cleans up the feature commits (compared to merging master to feature) and allows us to be in sinc with master
+         - can resolve in conflicts:
+            - in case of conflicts, rebase is paused
+            - floow instructions in terminal
+            - solve conflicts
+            - git add <file-with-conflict>
+            - git rebase --continued (do NOT commit!)
+            - alternativelly cancel rebase with git rebase --abort
+
+    2. cleanup tool (rewriting history)
+        
+        - a step a lot of devs use before sharing their branch / work
