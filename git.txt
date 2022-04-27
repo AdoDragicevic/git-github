@@ -1,3 +1,20 @@
+Basic commands:
+    - init
+    - status
+    - add
+    - commit
+    - stash
+    - log
+    - branch
+    - switch
+    - checkout
+    - merge
+    - rebase
+    - revert
+    - reset
+    - restore
+    - diff
+
 git init // create new repo; creates .git file
 
 .gitignore // secret.js node_modules/ *.txt
@@ -27,7 +44,8 @@ git switch <branch-name> // switch to branch
 git switch -c <branch-name> // create branch and switch to in
 git switch - // switch to branch we were on before
 
-git checout <branch-name> // switch to branch
+git chekout <branch-name> // switch to branch
+git checkout <tag-name> // switch to tag (a particular commit)
 
 git log // shows commits
 git log --oneline // shows commits overview
@@ -58,6 +76,7 @@ git diff <branch>..<branch2> // compare differences on branches
 git diff <branch> <branch2> // identical as line above
 git diff <commit-hash>..<commit-hash-2> // show differences between 2 branches
 git diff <commit-hash> <commit-hash-2> // identical as line above
+git diff <tag-name> <tag-name> // compare 2 tags
 
 git stash 
  - before we switch to another branch we should eather commit or stash changes
@@ -75,6 +94,7 @@ git stash clear // delete all stashes
 Going back in time
 git checkout <commit-hash> // gives us 'detached HEAD'; HEAD usually points to a branch reference, and
                               branch reference points to its last commit; 'detached HEAD' points to commit
+git checkout <tag-name> // puts us in 'detached HEAD'
  - detached HEAD options:
     - stay in detached HEAD in 'view mode',
     - go back to HEAD (git switch master),
@@ -133,4 +153,48 @@ Rebasing
 
     2. cleanup tool (rewriting history)
         
+        - called interactive rebasing
         - a step a lot of devs use before sharing their branch / work
+        - this is 'nice to have' category
+        - you are not rebasing on a branch, you are always rebasing on current HEAD history
+
+        git rebase -i HEAD~2
+
+        - -i opens interactive mode
+        - HEAD~4 shows how many commits back you want to go
+        - the in the interactive mode we get a list of commits with 'pick' keyword in front of them
+        - changing 'pick' determines what will happen to them
+        - interactive mode has a cheatsheet of all the commands
+        - most important commands:
+            - pick, reword, edit, fixup, drop
+            - after adding command(s) you close the window and editor will open a new interactive mode
+              for each commit that you added a command for
+            - you do not edit the commits in the first interactive window
+            - every commit that is changed and all commits after it gets a new hash
+
+Git tags
+ - often used to mark different product releases (v1.2.0)
+ - we tag a particular commit, this does not change it
+ - tag is a label for a commit
+ - think of it like a sticky note on a commit
+ - two types:
+    - lightweight tags (store label) and annotated tags (store extra meta data)
+
+ git tag // show list of all tags in current repo
+ git tag -l "*beta*" // show all tags that include 'beta'
+ git tag -l "v17*" // show all tags that start with 'v17'
+ git tag -l "beta" // look for tag called exactly 'beta'
+ git tag <tag-name> // creates tag at HEAD
+ 
+ 
+ git checkout <tag-name> // puts us in 'detached HEAD'
+ git diff <tag-name> <tag-name>
+
+
+Semantic versioning
+ - 2.2.1 or v2.2.1
+ - numbers represent: major release, minor release, patch release
+ - patch: no new fetures, just bug fixes, no change to how app is used
+ - minor: new features that are fully backwards compatible, usually optional for users;
+          pathc number resets to 0
+ - major: breaking changes; minor number resets to 0
