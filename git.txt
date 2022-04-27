@@ -77,6 +77,7 @@ git diff <branch> <branch2> // identical as line above
 git diff <commit-hash>..<commit-hash-2> // show differences between 2 branches
 git diff <commit-hash> <commit-hash-2> // identical as line above
 git diff <tag-name> <tag-name> // compare 2 tags
+git diff <tag-name>..<tag-name> // identical as line above
 
 git stash 
  - before we switch to another branch we should eather commit or stash changes
@@ -184,9 +185,17 @@ Git tags
  git tag -l "*beta*" // show all tags that include 'beta'
  git tag -l "v17*" // show all tags that start with 'v17'
  git tag -l "beta" // look for tag called exactly 'beta'
- git tag <tag-name> // creates tag at HEAD
- 
- 
+ git tag <tag-name> // creates tag at HEAD; creates lightweight tag
+ git tag -a <tag-name> // creates tag at HEAD; creates annotated tag
+ git tag <tag-name> <commit-hash> // tag selected commit
+ git tag -f <tag-name> <new-commit-hash> // if this tagname was taken it will now point to a new commit;
+                                            we force the change (tag no longer refers to old commit)
+ git tag -d <tag-name> // delete tag
+ git show <tag-name> // shows tag info (message, meta data, commit it referes to)
+
+ git push --tags // by default when we push changes to remote server, tags are not included; --tags flag ensures tags are pushed as well
+ git push <remote-name> <tag-name> // push singe tag to remote server
+
  git checkout <tag-name> // puts us in 'detached HEAD'
  git diff <tag-name> <tag-name>
 
