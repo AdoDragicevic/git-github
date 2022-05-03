@@ -1,0 +1,28 @@
+GitHub
+  - hosting platform for git repositories
+  - helps people to share and collaborate on git repos
+  - cloud
+  - also good for just baking things up
+  - the home of opensource projects on the internet
+  - portfolio, networking, exposure
+  - helps you stay up to date (e.g. with React updates)
+
+
+git clone <url> // get local copy of existing repo; make sure you are not inside an existing repo!
+
+SSH Key
+  - configure it to be able to push to github,
+    otherwise you will always have to give your email and password first
+  
+Connecting to github
+  - options:
+    1. You already have an existing repo locally
+      - create new repo on GitHub
+      - Connect local repo (add a remote)
+      - Push your changes to Github
+    2. No repo yet
+      - create new repo on Github
+      - clone it to the machine
+      - do work locally
+      - push changes to Github
+
