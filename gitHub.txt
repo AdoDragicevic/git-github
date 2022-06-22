@@ -1,28 +1,42 @@
 GitHub
   - hosting platform for git repositories
   - helps people to share and collaborate on git repos
-  - cloud
-  - also good for just baking things up
-  - the home of opensource projects on the internet
+  - cloud (store your code)
+  - opensource projects
   - portfolio, networking, exposure
-  - helps you stay up to date (e.g. with React updates)
+  - helps stay up to date (e.g. with React updates)
 
 
-git clone <url> // get local copy of existing repo; make sure you are not inside an existing repo!
+git clone <URL> // get copy of repo; make sure you are not inside a repo!
+
 
 SSH Key
-  - configure it to be able to push to github,
-    otherwise you will always have to give your email and password first
-  
+  - configure to be able to push to github, otherwise you always have to give your email and password
+
+
 Connecting to github
   - options:
-    1. You already have an existing repo locally
-      - create new repo on GitHub
-      - Connect local repo (add a remote)
-      - Push your changes to Github
-    2. No repo yet
-      - create new repo on Github
-      - clone it to the machine
-      - do work locally
-      - push changes to Github
+    a) existing repo locally
+      1. create repo on GitHub
+      2. set a remote (URL) locally
+        - git remote // show list of remotes for this repo
+        - git remote -v // more info
+        - git remote add <name> <URL> // create remote (name & url)
+        // origin is a conventional git remote name
+        - git remote rename <oldName> <newName> // rename
+        - git remote remove <name> // delete remote 
+      3. Push to Github
+        - git push <remoteName> <branch> // remoteName: e.g. origin, branch: branch we are pushing from our repo, e.g. main
+        // e.g. git push origin master
+        - git push origin master // push local master to origin master (if there is no origin master, it creates it)
+        - git push origin master:experiment // push local master to experiment branch on github
+        - git push -u <origin> <branch> // -u stands for upstream, next time we can just type 'git push' and it
+                                           pushes <branch> to <origin>, we "lock" them together
+        - git push --set-uprstream <origin> <dogs> // same as -u above
+    b) no repo
+      1. create repo on Github
+      2. clone it
+        - this automatically configures the remote (origin URL)
+      3. work locally
+      4. push to Github
 

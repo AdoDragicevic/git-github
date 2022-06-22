@@ -38,7 +38,7 @@ git branch // see branches
 git branch <branch-name> // create branch
 git branch -d <branch-name> // delete branch; you must not be on the branch you are trying to delete
 git branch -D <branch-name> // delete branch even if changes are not merged anywhere
-git branch -m <branch-name> // rename HEAD; you must be on the branch you are trying to rename
+git branch -M <branch-name> // rename HEAD; you must be on the branch you are trying to rename
 
 git switch <branch-name> // switch to branch
 git switch -c <branch-name> // create branch and switch to in
@@ -198,6 +198,10 @@ Git tags
 
  git checkout <tag-name> // puts us in 'detached HEAD'
  git diff <tag-name> <tag-name>
+
+
+Git clone
+ git clone <URL> // get copy of repo; make sure you are not inside a repo!
 
 
 Semantic versioning
