@@ -88,3 +88,11 @@ Fetching & Pulling
   - possible merge conflicts
   - git pull = git fetch (update remote tracking change) + git merge (update current branch with changes on remote tracking branch)
   
+
+  Odds & Outs
+    - only owner has access to settings
+    - public repo // accessible & clonable by anyone
+    - private repo // only visible and accessible to owner and people who granted access
+      - in corporations a private repo could be visible to everyone in the org
+      - change public vs private in settings -> danger zone
+    - collaborators // settings -> manage access
