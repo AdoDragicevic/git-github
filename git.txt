@@ -34,6 +34,8 @@ git commit -a -m " // add all untracked files to staging area & commit with mess
 git commit -am " // add all untracked files to staging area & commit with message
 git commit --ament // edit previous commit
 
+workspace -> git add -> staging area -> git commit -> local repo -> git push -> remote repo
+
 git branch // see branches
 git branch <branch-name> // create branch
 git branch -d <branch-name> // delete branch; you must not be on the branch you are trying to delete

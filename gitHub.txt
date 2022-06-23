@@ -40,3 +40,51 @@ Connecting to github
       3. work locally
       4. push to Github
 
+
+Remote Trancking Branches (reference)
+  - the last know spot we know of for origin/branch; shows where at the last time you commuicated with the remote repo the 
+    x branch was pointing
+  - they follow this pattern: <remote>/<branch>
+    - e.g.: upstream/logoDesign references the state of logoRedesign on the remote named upstream
+  - git branch -r // view remote branches our local repo knows about
+  - when you clone repo and add & commit changes, and type 'git status' you will get a msg: 
+    'your branch is ahead of origin/main by 1 commit (use "git push" to publish your changes)'
+  - remote tracking branches do not know if the remote repo was updated after you last cloned/pulled/fetched
+  - imagine this, the head of remote repo is not the head of your repo when you make changes, but you have the reference to your
+    head and origin head
+  - remote reference doesn't move!
+  - git checkout origin/master // see the state when you last downloaded remote repo
+  - git checkout origin/master // detached head state, just like checking out a previous commit
+
+
+Working with remote branches
+  - when you clone a repo with multiple branches, you ONLY have the default branch
+  - git branch -r // shows all branches from remote repo
+  - git switch <remote-branch-name> // creates local branch based on remote branch with same name
+  - git checkout --track origin/puppies // equivalent for line above
+  - git push <origin> <branchName> // pushes changes to specified remote branch
+  - if you just want to see the branch, use git checkout origin/branchName
+
+
+Fetching & Pulling
+  - git process of saving changes:
+    workspace -> git add -> staging area -> git commit -> local repo -> git push -> remote repo
+  - this commands get the changes from remote repo
+  - git fetct and git pull go the other dirrection
+  
+  - fetch: download changes, don't integrate them (don't change master/otherBranch); you can see
+           changes in origin/branch, but it does not affect your branch; to see changes with
+           'git checkout origin/branch'; it only updates remote trachink branches
+  - git fetch <remote> // remote repo -> local repo; if not specified, <remote> defaults to origin; gets all changes
+  - git fetch <remote> <branch> // fetch just one branch changes
+  - if new branch was added to remote repo, you can use git fetch origin to add that branch to remote
+    tracking branches (git branch -r)
+  - after fetch use 'git status'
+  
+  - git pull <remote> <branch> // remote repo -> worspace; download and integrate changes to local repo
+  - git pull // remote defaults to origin, branch defaults to originBranch connected to branch we are on
+  - it matters where we run git pull from! Changes are merged into the branch we are on.
+  - don't use 'git pull' if you have uncommited changes!
+  - possible merge conflicts
+  - git pull = git fetch (update remote tracking change) + git merge (update current branch with changes on remote tracking branch)
+  
