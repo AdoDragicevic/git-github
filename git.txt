@@ -100,7 +100,7 @@ git checkout <commit-hash> // gives us 'detached HEAD'; HEAD usually points to a
 git checkout <tag-name> // puts us in 'detached HEAD'
  - detached HEAD options:
     - stay in detached HEAD in 'view mode',
-    - go back to HEAD (git switch master),
+    - go back to HEAD ('git switch master', 'git swithc -'),
     - chreate new branch and switch to it (you can now make and save changes, since HEAD is no longer detached)
 
 git checkout HEAD~1 // revisit previous commit (number indicates how far back)
@@ -198,7 +198,7 @@ Git tags
  git push --tags // by default when we push changes to remote server, tags are not included; --tags flag ensures tags are pushed as well
  git push <remote-name> <tag-name> // push singe tag to remote server
 
- git checkout <tag-name> // puts us in 'detached HEAD'
+ git checkout <tag-name> // puts us in 'detached HEAD'; 'git switch -' to exit detached HEAD
  git diff <tag-name> <tag-name>
 
 

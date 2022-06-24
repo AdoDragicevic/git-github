@@ -96,3 +96,45 @@ Fetching & Pulling
       - in corporations a private repo could be visible to everyone in the org
       - change public vs private in settings -> danger zone
     - collaborators // settings -> manage access
+    - github gists // code snippets; simplified repos; read: đists; https://gist.github.com/AdoDragicevic
+    - gh pages // host static websites, only client side code (html, css, js); https://pages.github.com/
+                  steps on github:
+                    - create repo
+                    - settings -> github pages -> source -> choose branch (does not have to be main)
+                    - github looks for index.html
+
+
+Collaboration workflows:  
+  1. centralized
+    - everyone works on main; worst approach (conflicts, pushing unfinished code to main...)
+  2. feature
+    - don't work on master, work only on feature branch
+    - some use these naming conventions: feat/navbar, bug/navbar, fix/navbar, refactor/navbar
+    - before creating branch and mergin, run 'git pull' to ensure you're up to date!
+    - options for merging feature branches to main:
+        1. just do it, worst option
+        2. teemates discuss if your branch should be merged, code review
+        3. pull requests (PR)
+            - gitHub feature, not part of git
+            - alert team members their approval is needed
+            - in a lot of companies the main branch is protected, you can't make a merge before PR;
+              branch protection rules // settings -> branches
+            - you make it on gitHub after pushing your branch
+            - it allows you and teammates to communicate through comments
+            - changes can be made to the branch even after pull request
+            - conflicts can be solved in the browser, or click 'view command line instructions' to  
+  3. Fork
+    - instead of one github repo, each dev has his own github repo
+    - devs push to their own github repos, before making pull requests
+    - common with large open sorce projects
+    - no premission needed at first, you copy react repo, make changes and only then make PR
+    - forking is a feature of gitHub, not part of git
+    - forking = making a copy of github repo on our gitHub account
+    - steps: 
+      - fork // open someones hitHub repo, click fork btn (there is no git fork command!)
+      - clone // 'git clone' the fork (copy on our github) to our machine; origin points to our copy remote repo, not original github repo
+      - add upstream remote // add a remote pointing to the original remote repo (so we can tranck changes there), usually named upstream
+                               We never push to that repo! We pull (or fetch) changes from it!
+      - change // all changes are made locally and pushed to the fork (our remote copy)
+      - PR // make pull request from fork to the original remote repo; over of original remote repo decides on the PR
+    - the whole idea is that people, with no access rights to remote repo, still can make contributions (e.g. react)
