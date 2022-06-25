@@ -1,20 +1,10 @@
 Basic commands:
-    - init
-    - status
-    - add
-    - commit
-    - stash
-    - log
-    - branch
-    - switch
-    - checkout
-    - merge
-    - rebase
-    - revert
-    - reset
-    - restore
-    - diff
-
+    - init, status, add, commit, stash, log, reflog, diff (8)
+    - branch, switch, checkout, merge, rebase (5)
+    - reset, restore, revert (3)
+    - clone, remote, push, pull, fetch (5)
+    - tag (1)
+    
 git init // create new repo; creates .git file
 
 .gitignore // secret.js node_modules/ *.txt
@@ -235,3 +225,31 @@ Aliases
     - a = add file1 
     - when we run 'git a' anything passed after is appended to alias, e.g. git a file1.txt app.js
   - you can find aliases online
+
+
+Reflog
+  - short for 'reference logs'
+  - git keeps a list of whenever references (e.g. branch, head, remotes) update; e.g. switch branches 
+    (reflogs saying head switched from branch1 to branch2)
+  - retrieving "lost" work and fixing mistakes
+  - similar to git log that is reference of commits, but reflog keeps track of commits and other changes
+    like switch, rebase, hard reset...; even if we delete a commit, it stays in reflogs!
+  - 'cd .git' -> 'cd logs'
+  - reflogs keep track of ONLY local changes (not your colaborators actions on remote repo)
+  - reflogs are deleted every 90 days (if not configured differently)
+  - git reflog show <reference> // defaults to HEAD
+  - reflog reference:
+    - name@{qualifier}
+    - e.g. HEAD@{num} // reference to entry, the most recent is HEAD@{0}
+    - we can use this syntax to access speciffic ref pointers and pass them to other commands (checkout, reset, merge)
+    - git reflog show HEAD@{13} // shows HEAD refs from beginning of repo to 13 moves ago
+    - git reflog checkout HEAD@{2} // visit HEAD 2 refs ago
+    - git checkout HEAD~2 // different than line above! This goes 2 commits back, it ignores switch, reset, etc.
+  - timed reference:
+    - every entry in reflog has a timestamp
+    - search by time, e.g.:
+      - git reflog show HEAD@{yesterday}
+      - git reflog show master@{2.days.ago}
+      - git reflog show navbar@{one.week.ago}
+      - git reflog show main@{3.minutes.ago}
+    - git diff master master@{yesterday}
