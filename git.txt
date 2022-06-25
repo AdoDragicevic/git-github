@@ -28,6 +28,7 @@ git branch <branch-name> // create branch
 git branch -d <branch-name> // delete branch; you must not be on the branch you are trying to delete
 git branch -D <branch-name> // delete branch even if changes are not merged anywhere
 git branch -M <branch-name> // rename HEAD; you must be on the branch you are trying to rename
+- branch created off of featureBranch is available equaly a branch created from master
 
 git switch <branch-name> // switch to branch
 git switch -c <branch-name> // create branch and switch to in
@@ -67,6 +68,7 @@ git diff <commit-hash>..<commit-hash-2> // show differences between 2 branches
 git diff <commit-hash> <commit-hash-2> // identical as line above
 git diff <tag-name> <tag-name> // compare 2 tags
 git diff <tag-name>..<tag-name> // identical as line above
+git diff <branch1> <branch2> <file> // in two branches compare only specified file
 
 git stash 
  - before we switch to another branch we should eather commit or stash changes
@@ -209,6 +211,8 @@ Semantic versioning
   - usually we configure things globally like this:
       git config --global user.name "Ado Dragicevic" // ommit string to see current name
       git config --global user.email "adodragicevic@gmail.com"
+  - we can do it for only this repo:
+      git config --local user.name "Michael Desa"
 
 
 Aliases
