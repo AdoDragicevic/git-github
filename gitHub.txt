@@ -136,5 +136,6 @@ Collaboration workflows:
       - add upstream remote // add a remote pointing to the original remote repo (so we can tranck changes there), usually named upstream
                                We never push to that repo! We pull (or fetch) changes from it!
       - change // all changes are made locally and pushed to the fork (our remote copy)
-      - PR // make pull request from fork to the original remote repo; over of original remote repo decides on the PR
+      - PR // make pull request from fork to the original remote repo; over of original remote repo decides on the PR;
+              owner of the original repo sees them 'under pull requests'
     - the whole idea is that people, with no access rights to remote repo, still can make contributions (e.g. react)

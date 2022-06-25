@@ -19,9 +19,6 @@ git init // create new repo; creates .git file
 
 .gitignore // secret.js node_modules/ *.txt
 
-git config --global user.name "Ado Dragicevic" // ommit string to see current name
-git config --global user.email "adodragicevic@gmail.com"
-
 git status // check status
 
 git add <file-name> // add to staging area
@@ -213,3 +210,28 @@ Semantic versioning
  - minor: new features that are fully backwards compatible, usually optional for users;
           pathc number resets to 0
  - major: breaking changes; minor number resets to 0
+
+
+ Configuration
+  - cd .git -> config // opens configuration for current repo
+  - ~/.config/git/config // global git config file in home dir
+   - one lvl up is system wide config // if you have multiple users on one machine; rarelly used
+  - usually we configure things globally like this:
+      git config --global user.name "Ado Dragicevic" // ommit string to see current name
+      git config --global user.email "adodragicevic@gmail.com"
+
+
+Aliases
+  - added to config file (usually global)
+  - our name for existing commands, e.g. 'git s' = 'git status'
+  - creation:
+    1. in config file:
+      [alias]
+        s = status
+        l = log
+    2. from command line:
+      git config --global alias.s = status
+  - aliases with arguments:
+    - a = add file1 
+    - when we run 'git a' anything passed after is appended to alias, e.g. git a file1.txt app.js
+  - you can find aliases online
