@@ -19,7 +19,10 @@ git commit // add checkpoint
 git commit -m // "add checkpoint and inline message"
 git commit -a -m " // add all untracked files to staging area & commit with message
 git commit -am " // add all untracked files to staging area & commit with message
-git commit --ament // edit previous commit
+git commit --ament // edit/redo previous commit; 
+                      a) to edit the name: 'git commit --ammend' > change name in opened window;
+                      b) to add a file; 'git add <file>' > 'git commit --ammend' > close opened window (everything in staging area is added to commit)
+                      c) to remove file; 'git commit --ammend' > remove file from opened window
 
 workspace -> git add -> staging area -> git commit -> local repo -> git push -> remote repo
 
